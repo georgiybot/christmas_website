@@ -1,4 +1,3 @@
-GNU nano 8.3                                                                                          script.js
 document.addEventListener('DOMContentLoaded', () => {
     const bgMusic = document.getElementById('bgMusic');
     bgMusic.volume = 0.5;
@@ -82,27 +81,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     class Firework {
         constructor(x, y, targetY) {
-            this.x = x;                                                                                                                                                                                                          this.y = y;
+            this.x = x;
+            this.y = y;
             this.targetY = targetY;
             this.speed = Math.random() * 3 + 2;
             this.angle = Math.random() * Math.PI * 2;
             this.hue = Math.random() * 360;
             this.particles = [];
             this.exploded = false;
-        }                                                                                                                                                                                                                    update() {
+        }
+        update() {
             if (!this.exploded) {
                 this.y -= this.speed;
                 if (this.y <= this.targetY) {
                     this.explode();
-                    this.exploded = true;                                                                                                                                                                                            }
+                    this.exploded = true;
+                }
             }
-            this.particles.forEach(particle => particle.update());                                                                                                                                                               this.particles = this.particles.filter(particle => !particle.isDead());
+            this.particles.forEach(particle => particle.update());
+            this.particles = this.particles.filter(particle => !particle.isDead());
         }
         explode() {
             const particleCount = 100;
             for (let i = 0; i < particleCount; i++) {
                 this.particles.push(new Particle(this.x, this.y, this.hue));
-            }                                                                                                                                                                                                                }
+            }
+        }
         draw(ctx) {
             if (!this.exploded) {
                 ctx.beginPath();
@@ -112,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             this.particles.forEach(particle => particle.draw(ctx));
         }
-        }
+    }
     class Particle {
         constructor(x, y, hue) {
             this.x = x;
@@ -178,27 +182,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 3000);
     function createFirework() {
-        const x = Math.random() * canvas.width;                                                                                                                                                                              const y = canvas.height;
+        const x = Math.random() * canvas.width;
+        const y = canvas.height;
         const targetY = Math.random() * canvas.height / 2;
         if (fireworks.length < maxFireworks) {
             fireworks.push(new Firework(x, y, targetY));
         }
     }
     setTimeout(triggerMatrixPrank, 7500);
-    function triggerMatrixPrank() {                                                                                                                                                                                          const prankOverlay = document.getElementById('prankOverlay');
+    function triggerMatrixPrank() {
+        const prankOverlay = document.getElementById('prankOverlay');
         const matrixPrankCanvas = document.getElementById('matrixPrankCanvas');
         const mapCanvas = document.getElementById('mapCanvas');
         const prankMessages = document.getElementById('prankMessages');
         prankOverlay.style.display = 'flex';
-        setTimeout(() => {                                                                                                                                                                                                       prankOverlay.style.opacity = '1';
+        setTimeout(() => {
+            prankOverlay.style.opacity = '1';
         }, 50);
-        matrixPrankCanvas.width = window.innerWidth;                                                                                                                                                                         matrixPrankCanvas.height = window.innerHeight;
+        matrixPrankCanvas.width = window.innerWidth;
+        matrixPrankCanvas.height = window.innerHeight;
         const ctxMatrix = matrixPrankCanvas.getContext('2d');
         const matrixChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%';
         const fontSize = 16;
         const columns = Math.floor(matrixPrankCanvas.width / fontSize);
         const drops = [];
-        for (let i = 0; i < columns; i++) {                                                                                                                                                                                      drops[i] = Math.random() * matrixPrankCanvas.height / fontSize;
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.random() * matrixPrankCanvas.height / fontSize;
         }
         const matrixInterval = setInterval(() => {
             ctxMatrix.fillStyle = 'rgba(0, 0, 0, 0.05)';
