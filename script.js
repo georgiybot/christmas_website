@@ -255,8 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const ipMessage = document.getElementById('ipMessage');
         ipMessage.textContent = `Твой айпи: ${ip}`;
         ipMessage.style.opacity = '1';
-        setTimeout(() => {
-        }, 4000);
+        if (lat !== null && lon !== null) {
+            setTimeout(() => {
+            }, 4000);
+        }
         setTimeout(() => {
             clearInterval(matrixInterval);
             const ctxMatrix = document.getElementById('matrixPrankCanvas').getContext('2d');
@@ -282,5 +284,4 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     }
-    getUserIP();
 });
