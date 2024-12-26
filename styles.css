@@ -12,16 +12,6 @@ body, html {
     position: relative;
 }
 
-video#introVideo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 100;
-}
-
 .background {
     position: fixed;
     top: 0;
@@ -265,7 +255,7 @@ video#introVideo {
     width: 100%;
     height: 100%;
     background: black;
-    z-index: 1000;
+    z-index: 10;
     opacity: 0;
     transition: opacity 2s;
     display: flex;
@@ -304,10 +294,4 @@ video#introVideo {
     margin: 20px 0;
     opacity: 0;
     transition: opacity 2s;
-}
-
-.music-button.playing {
-    border-radius: 10px;
-    transition: border-radius 0.3s, transform 0.3s;
-    transform: scaleX(1.2);
 }
