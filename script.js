@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     let fireworks = [];
-    const maxFireworks = 5;
+    const maxFireworks = 1000;
     function animate() {
         ctx.globalCompositeOperation = 'destination-out';
         ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
